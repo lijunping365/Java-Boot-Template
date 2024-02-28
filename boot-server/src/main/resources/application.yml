@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /boot-api
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: java-boot-template
+  main:
+    allow-bean-definition-overriding: true # SpringBoot 2.1需要设置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 10MB
+  resources:
+    cache:
+      cachecontrol:
+        max-age: 30s
+        stale-while-revalidate: 7d
+        cache-public: true
+        no-transform: true
+
+servlet:
+  tomcat:
+    max-swallow-size: -1 # 解决上传图片超过2MB之后，出现连接重置的问题
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    com.openbytecode: INFO

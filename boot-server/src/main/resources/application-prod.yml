@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: Hikari
+      max-lifetime: 55000
+      connection-timeout: 60000
+      connection-test-query: SELECT 1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/xxx?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+
+com:
+  saucesubfresh:
+    # 验证码功能
+    captcha:
+      image:
+        length: 4 #图形验证码的位数为6，将覆盖默认配置中的4
+        width: 200 #图形验证码的宽度为100，将覆盖默认配置中的67，但由于请求中设置的宽度为200，所以真正的宽度将为200
+        height: 60
+      scan:
+        width: 300 #二维码宽度
+        height: 300 #二维码高度
+        margin: 1 #二维码外边距，0到4
+      math:
+        width: 200 #图形验证码的宽度为100，将覆盖默认配置中的67，但由于请求中设置的宽度为200，所以真正的宽度将为200
+        height: 60
+    # oauth 功能
+    oauth:
+      token:
+        support-refresh-token: true #开启刷新 token 功能
+        access-token-expires-in: 2592000 #token 过期时间，86400 秒，30 天
+        refresh-token-expire-times: 7 # refreshToken 过期时间，七天
+    # 安全功能
+    security:
+      # 白名单
+      ignore-paths:
+        - "/captcha/**"
+        - "/login/**"
+        - '/register/**'
+
+
+    # 对象存储，这里要换成你自己的
+    cos:
+      secret-id: 111111111111111111111111111111111
+      secret-key: 2222222222222222222222222
+      bucket: wwwwwwwwwwww-1111111111
+      region: ap-beijing
+      cdn-host: https://cdn.xxxxxxxxx.com/

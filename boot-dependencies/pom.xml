@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.openbytecode</groupId>
+    <artifactId>boot-dependencies</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <version>1.0-SNAPSHOT</version>
+    <description>Maven Bom，定义 Open-News 项目的所有依赖的版本</description>
+
+    <properties>
+        <!-- 项目基础依赖版本 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <resource.delimiter>@</resource.delimiter>
+        <java.version>1.8</java.version>
+
+        <!-- spring-boot相关依赖 -->
+        <spring-boot.version>2.3.6.RELEASE</spring-boot.version>
+        <lombok.version>1.18.16</lombok.version>
+        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+
+        <!-- open source version -->
+        <open-starter-captcha.version>1.0.4</open-starter-captcha.version>
+        <open-starter-oauth.version>1.0.5</open-starter-oauth.version>
+        <open-starter-security.version>1.0.4</open-starter-security.version>
+        <open-starter-http.version>1.0.5</open-starter-http.version>
+        <open-starter-alarm.version>1.0.3</open-starter-alarm.version>
+
+        <!-- maven相关版本 -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+
+        <!-- mybatis-plus -->
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
+        <!-- redisson -->
+        <redisson.version>3.15.3</redisson.version>
+        <!-- ip2region -->
+        <ip2region.version>2.7.0</ip2region.version>
+        <!-- 腾讯云 cos 存储 -->
+        <cos.version>5.6.133</cos.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.saucesubfresh</groupId>
+                <artifactId>open-starter-captcha</artifactId>
+                <version>${open-starter-captcha.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.saucesubfresh</groupId>
+                <artifactId>open-starter-oauth</artifactId>
+                <version>${open-starter-oauth.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.saucesubfresh</groupId>
+                <artifactId>open-starter-security</artifactId>
+                <version>${open-starter-security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!--  mapstruct  -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.saucesubfresh</groupId>
+                <artifactId>open-starter-http</artifactId>
+                <version>${open-starter-http.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.saucesubfresh</groupId>
+                <artifactId>open-starter-alarm</artifactId>
+                <version>${open-starter-alarm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>${cos.version}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
